@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/menu1.css" />
+    <title>练习02 实现菜单的收缩与扩展</title>
+</head>
+
+<body>
+    <div id="leftNav" class="left-nav">
+        <div id="myMenu" class="menuBox">
+            <ul class="spMenuBox">
+                <li class="spMenuItem " onclick="fun1()">
+                    <div class="spMenu" id="subMenuBox_1" onclick="ss">
+                        <i class="fa fa-folder"></i>
+                        <span>菜单1</span>
+                        <i class="fa fa-2x fa-angle-down"></i>
+                    </div>
+                    <ul class="subMenuBox" style="display: none;">
+                        <li><span class="subMenu">菜单1.1</span></li>
+                        <li><span class="subMenu">菜单1.2</span></li>
+                        <li><span class="subMenu">菜单1.3</span></li>
+                    </ul>
+                </li>
+                <li class="spMenuItem">
+                    <div class="spMenu" onclick="fun2()">
+                        <i class="fa fa-folder"></i>
+                        <span>菜单2</span>
+                        <i class="fa fa-2x fa-angle-down"></i>
+                    </div>
+                    <ul class="subMenuBox" style="display: none;">
+                        <li><span class="subMenu">菜单2.1</span></li>
+                        <li><span class="subMenu">菜单2.2</span></li>
+                        <li><span class="subMenu">菜单2.3</span></li>
+                        <li><span class="subMenu">菜单2.1</span></li>
+                        <li><span class="subMenu">菜单2.2</span></li>
+                        <li><span class="subMenu">菜单2.3</span></li>
+                    </ul>
+                </li>
+                <li class="spMenuItem">
+                    <div class="spMenu" onclick="fun3()">
+                        <i class="fa fa-folder"></i>
+                        <span>菜单3</span>
+                        <i class="fa fa-2x fa-angle-down"></i>
+                    </div>
+                    <ul class="subMenuBox" style="display: none;">
+                        <li><span class="subMenu">菜单3.1</span></li>
+                        <li><span class="subMenu">菜单3.2</span></li>
+                        <li><span class="subMenu">菜单3.3</span></li>
+                        <li><span class="subMenu">菜单3.1</span></li>
+                        <li><span class="subMenu">菜单3.2</span></li>
+                        <li><span class="subMenu">菜单3.3</span></li>
+                        <li><span class="subMenu">菜单3.1</span></li>
+                        <li><span class="subMenu">菜单3.2</span></li>
+                        <li><span class="subMenu">菜单3.3</span></li>
+                    </ul>
+                </li>
+                <li class="spMenuItem">
+                    <div class="spMenu" onclick="fun4()">
+                        <i class="fa fa-folder"></i>
+                        <span>菜单4</span>
+                        <i class="fa fa-2x fa-angle-down"></i>
+                    </div>
+                    <ul class="subMenuBox" style="display: none;">
+                        <li><span class="subMenu">菜单4.1</span></li>
+                        <li><span class="subMenu">菜单4.2</span></li>
+                        <li><span class="subMenu">菜单4.3</span></li>
+                    </ul>
+                </li>
+                <li class="spMenuItem">
+                    <div class="spMenu" onclick="fun5()">
+                        <i class="fa fa-folder"></i>
+                        <span>菜单5</span>
+                        <i class="fa fa-2x fa-angle-down"></i>
+                    </div>
+                    <ul class="subMenuBox" style="display: none;">
+                        <li><span class="subMenu">菜单5.1</span></li>
+                        <li><span class="subMenu">菜单5.2</span></li>
+                        <li><span class="subMenu">菜单5.3</span></li>
+                        <li><span class="subMenu">菜单5.1</span></li>
+                        <li><span class="subMenu">菜单5.2</span></li>
+                        <li><span class="subMenu">菜单5.3</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+<script>
+    let spMenuItem = document.querySelectorAll(".spMenuItem")[0];      //找到标签位置
+    let fa1 = document.querySelectorAll(".fa-folder")[0];
+    let fa2 = document.querySelectorAll(".fa-2x")[0];
+    let subMenuBox = document.querySelectorAll(".subMenuBox")[0];
+
+    function fun1() {                                      //构造函数变换图标和菜单收缩   --189000759-吕承珂
+        if (spMenuItem.className != "spMenuItem active") {
+            spMenuItem.className = "spMenuItem active";
+            fa1.className = "fa fa-folder-open ";
+            fa2.className = "fa fa-2x fa-angle-up";
+            subMenuBox.style.display = "block";
+        } else {
+            spMenuItem.className = "spMenuItem";
+            fa1.className = "fa fa-folder ";
+            fa2.className = "fa fa-2x fa-angle-down";
+            subMenuBox.style.display = "none";
+        }
+
+    }
+    let spMenuItem1 = document.querySelectorAll(".spMenuItem")[1];
+    let fa3 = document.querySelectorAll(".fa-folder")[1];
+    let fa4 = document.querySelectorAll(".fa-2x")[1];
+    let subMenuBox1 = document.querySelectorAll(".subMenuBox")[1];
+
+    function fun2() {
+        if (spMenuItem1.className != "spMenuItem active") {
+            spMenuItem1.className = "spMenuItem active";
+            fa3.className = "fa fa-folder-open ";
+            fa4.className = "fa fa-2x fa-angle-up";
+            subMenuBox1.style.display = "block";
+        } else {
+            spMenuItem1.className = "spMenuItem";
+            fa3.className = "fa fa-folder ";
+            fa4.className = "fa fa-2x fa-angle-down";
+            subMenuBox1.style.display = "none";
+        }
+
+    }
+    let spMenuItem2 = document.querySelectorAll(".spMenuItem")[2];
+    let fa5 = document.querySelectorAll(".fa-folder")[2];
+    let fa6 = document.querySelectorAll(".fa-2x")[2];
+    let subMenuBox2 = document.querySelectorAll(".subMenuBox")[2];
+
+    function fun3() {
+        if (spMenuItem2.className != "spMenuItem active") {
+            spMenuItem2.className = "spMenuItem active";
+            fa5.className = "fa fa-folder-open ";
+            fa6.className = "fa fa-2x fa-angle-up";
+            subMenuBox2.style.display = "block";
+        } else {
+            spMenuItem2.className = "spMenuItem";
+            fa5.className = "fa fa-folder ";
+            fa6.className = "fa fa-2x fa-angle-down";
+            subMenuBox2.style.display = "none";
+        }
+
+    }
+    let spMenuItem3 = document.querySelectorAll(".spMenuItem")[3];
+    let fa7 = document.querySelectorAll(".fa-folder")[3];
+    let fa8 = document.querySelectorAll(".fa-2x")[3];
+    let subMenuBox3 = document.querySelectorAll(".subMenuBox")[3];
+
+    function fun4() {
+        if (spMenuItem3.className != "spMenuItem active") {
+            spMenuItem3.className = "spMenuItem active";
+            fa7.className = "fa fa-folder-open ";
+            fa8.className = "fa fa-2x fa-angle-up";
+            subMenuBox3.style.display = "block";
+        } else {
+            spMenuItem3.className = "spMenuItem";
+            fa7.className = "fa fa-folder ";
+            fa8.className = "fa fa-2x fa-angle-down";
+            subMenuBox3.style.display = "none";
+        }
+
+    }
+    let spMenuItem4 = document.querySelectorAll(".spMenuItem")[4];
+    let fa9 = document.querySelectorAll(".fa-folder")[4];
+    let fa10 = document.querySelectorAll(".fa-2x")[4];
+    let subMenuBox4 = document.querySelectorAll(".subMenuBox")[4];
+
+    function fun5() {
+        if (spMenuItem4.className != "spMenuItem active") {
+            spMenuItem4.className = "spMenuItem active";
+            fa9.className = "fa fa-folder-open ";
+            fa10.className = "fa fa-2x fa-angle-up";
+            subMenuBox4.style.display = "block";
+        } else {
+            spMenuItem4.className = "spMenuItem";
+            fa9.className = "fa fa-folder ";
+            fa10.className = "fa fa-2x fa-angle-down";
+            subMenuBox4.style.display = "none";          
+        }
+
+    }
+</script>
+
+</html>
