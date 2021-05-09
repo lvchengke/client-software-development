@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>让坦克开起来</title>
+    <style type="text/css">
+        input {
+            font-size: 26px;
+            margin-top: 20px;
+        }
+        
+        body {
+            background-image: url(images/grassland.png);
+        }
+        
+        #mytank {
+            position: absolute;
+            left: 10px;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="mytank" src="images/right.png">
+    <script>
+        let sq = document.getElementById("mytank"); //获取元素
+        let x = sq.offsetLeft,
+            y = sq.offsetTop; //获取tank距左边以及上方的距离
+
+        document.addEventListener("keydown", function(event) { //判断按下的键
+            switch (event.key) {
+                case "w":
+                    y -= 10;
+                    sq.src = "images/up.png"
+                    break;
+                case "a":
+                    x -= 10;
+                    sq.src = "images/left.png"
+                    break;
+                case "d":
+                    x += 10;
+                    sq.src = "images/right.png"
+                    break;
+                case "s":
+                    y += 10;
+                    sq.src = "images/down.png"
+                    break;
+            }
+        });
+        document.addEventListener("keydown", function() { //按下移动
+            sq.style.cssText = `
+            top:${y}px;
+            left:${x}px;
+            transition:none ;
+            `;
+        })
+    </script>
+</body>
+
+</html>
