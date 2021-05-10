@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>实验5：图片的DOM操作</title>
+    <style type="text/css">
+        html,
+        div,
+        ul,
+        li {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        a {
+            cursor: pointer;
+        }
+        
+        li {
+            list-style: none;
+            cursor: pointer;
+        }
+        
+        fieldset {
+            border: #000 1px dashed;
+            width: 225px;
+            height: 225px;
+            padding: 10px;
+            text-align: center;
+            float: left;
+            margin-left: 5px;
+        }
+        
+        fieldset p {
+            width: 225px;
+            word-wrap: break-word;
+        }
+        
+        #cont_left {
+            width: 300px;
+            height: 500px;
+            float: left;
+        }
+        
+        #cont_right {
+            float: left;
+        }
+        
+        .newcss1 {
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cont_left">
+        <ul><img src="img/fold.gif"><a onclick="show('menu1')"> 通过DOM获取信息 </a>
+            <ul id="menu1">
+                <li onclick="huoqu()"><img src="img/doc.gif">获取原始图片路径</li>
+                <li onclick="hqfruit()"><img src="img/doc.gif">获取我喜欢的水果</li>
+            </ul>
+        </ul>
+
+        <ul><img src="img/fold.gif"><a onclick="show('menu2')"> 通过DOM操作元素 </a>
+            <ul id="menu2">
+                <li><img src="img/doc.gif">创建图片</li>
+                <li><img src="img/doc.gif">克隆图片</li>
+                <li><img src="img/doc.gif">改变图片</li>
+                <li><img src="img/doc.gif">删除图片</li>
+            </ul>
+        </ul>
+
+        <ul><img src="img/fold.gif"><a onclick="show('menu3')"> 通过DOM操作样式 </a>
+            <ul id="menu3">
+                <li><img src="img/doc.gif">为原始图片加上行间样式</li>
+                <li><img src="img/doc.gif">为所有的fieldset加上内部样式</li>
+            </ul>
+        </ul>
+
+    </div>
+    <fieldset>
+        <legend>原始图片</legend>
+        <img id="fruit" src="img/fruit.jpg">
+    </fieldset>
+    <fieldset class="1">
+        <legend>图片路径</legend>
+        <p id="msg1">在这里显示</p>
+    </fieldset>
+    <fieldset>
+        <legend>选择你喜欢的水果</legend>
+        <ul style="text-align: left;">
+            <li>
+                <input id="enjoy1" type="checkbox" value="苹果" />苹果
+            </li>
+            <li>
+                <input id="enjoy2" type="checkbox" value="香蕉" checked="checked" />香蕉
+            </li>
+            <li>
+                <input id="enjoy3" type="checkbox" value="葡萄" />葡萄
+            </li>
+            <li>
+                <input id="enjoy4" type="checkbox" value="梨" checked="checked" />梨
+            </li>
+            <li>
+                <input id="enjoy5" type="checkbox" value="西瓜" />西瓜
+            </li>
+        </ul>
+        <div id="msg2" style="margin-top: 10px;text-align: left;"></div>
+    </fieldset>
+    <fieldset>
+        <legend>创建图片</legend>
+        <div id="msg3"></div>
+    </fieldset>
+    <fieldset>
+        <legend>克隆图片</legend>
+        <div id="msg4"></div>
+    </fieldset>
+    <script>
+        function huoqu() {
+            let lj = document.getElementById("msg1");
+            let lj0 = document.getElementById("fruit"); //189000759--吕承珂
+            lj.innerHTML = lj0.src;
+        }
+
+        function hqfruit() {
+            let a1 = document.getElementById("enjoy1");
+            let b1 = a1.checked;
+            var d = document.getElementById("msg2");
+            if (b1 == true) { //判定返回的checked值是否为真而是否执行打印该水果
+                let c1 = a1.value;
+                var newItem = document.createElement("LI")
+                var textnode = document.createTextNode(c1)
+                newItem.appendChild(textnode)
+                d.insertBefore(newItem, d.childNodes[0]);
+            }
+            let a2 = document.getElementById("enjoy2");
+            let b2 = a2.checked;
+            if (b2 == true) {
+                let c2 = a2.value;
+                var newItem = document.createElement("LI")
+                var textnode = document.createTextNode(c2)
+                newItem.appendChild(textnode)
+                d.insertBefore(newItem, d.childNodes[0]);
+            }
+            let a3 = document.getElementById("enjoy3");
+            let b3 = a3.checked;
+            if (b3 == true) {
+                let c3 = a3.value;
+                var newItem = document.createElement("LI")
+                var textnode = document.createTextNode(c3)
+                newItem.appendChild(textnode)
+                d.insertBefore(newItem, d.childNodes[0]);
+            }
+            let a4 = document.getElementById("enjoy4");
+            let b4 = a4.checked;
+            if (b4 == true) {
+                let c4 = a4.value;
+                var newItem = document.createElement("LI")
+                var textnode = document.createTextNode(c4)
+                newItem.appendChild(textnode)
+                d.insertBefore(newItem, d.childNodes[0]);
+            }
+
+            let a5 = document.getElementById("enjoy5");
+            let b5 = a5.checked;
+            if (b5 == true) {
+                let c5 = a5.value;
+                var newItem = document.createElement("LI")
+                var textnode = document.createTextNode(c5)
+                newItem.appendChild(textnode)
+                d.insertBefore(newItem, d.childNodes[0]);
+            }
+        }
+        var ct1 = document.querySelectorAll("#menu2>li")[0]; //找到标签
+        var ct2 = document.getElementById("msg3");
+        ct1.onclick = function() { //点击创建图片
+            var img = document.createElement('img');
+            img.setAttribute('src', 'img/grape.jpg');
+            ct2.appendChild(img);
+        }
+        var clone1 = document.querySelectorAll("#menu2>li")[1];
+        var clone2 = document.getElementById("msg4");
+        clone1.onclick = function() { //点击克隆照片
+            var img = document.createElement('img');
+            img.setAttribute('src', 'img/fruit.jpg');
+            clone2.appendChild(img);
+        }
+        var change1 = document.querySelectorAll("#menu2>li")[2];
+        change1.onclick = function() { //点击换照片
+            document.getElementById("fruit").src = "img/grape.jpg";
+        }
+        var delte1 = document.querySelectorAll("#menu2>li")[3];
+        delte1.onclick = function() { //点击删除照片
+            document.getElementById("fruit").src = "";
+        }
+        var hangjian1 = document.querySelectorAll("#menu3>li")[0];
+
+        hangjian1.onclick = function() { //点击改变行间样式
+            document.getElementById("fruit").style.width = 100 + "px";
+        }
+        var neibu1 = document.querySelectorAll("#menu3>li")[1];
+        neibu1.onclick = function() { //点击改变所有内部样式
+                var bb = document.querySelectorAll("fieldset");
+                for (var i = 1; i < 6; i++) {
+                    for (var ele in bb) {
+                        bb[ele].style.color = "red";
+                    }
+                }
+            }
+            //菜单收缩与扩展
+        function show(item) {
+            let currentMenu = document.getElementById(item);
+            let currentStatus = currentMenu.style.display;
+            currentMenu.style.display = currentStatus == "" ? "none" : "";
+        }
+    </script>
+</body>
+
+</html>
