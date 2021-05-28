@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+
+        $("#box").click(function(e) { //189000759-吕承珂
+            var x = $("#part").offset().left;
+            console.log(x);
+
+            var e = e || window.event;
+            //						获得当前点击位置距离浏览器顶部的距离
+            var top = e.pageY;
+            //						获得当前点击位置距离浏览器左侧的距离
+            var left = e.pageX;
+            var b = x - left;
+            console.log(b);
+
+            if (b > 0) {
+                $("#part").attr('src', "img/player_left.gif");
+            } else {
+                $("#part").attr('src', "img/player_right.gif");
+            }
+            console.log(top + '|' + left)
+            $("#part").finish();
+            $("#part").animate({
+                left: left,
+                top: top
+            }, "slow");
+
+        });
+        $("#part").dblclick(function() {
+            var a = 1;
+            $("#part").attr('src', "img/playerbig_right.gif");
+        });
+    });
+</script>
+<div style="width: 100%; height: 1000px; background-color: black; position: absolute; left: 0;" id="box">
+    <img src="img/player_right.gif" alt="" id="part" style="position: absolute;left: 0;">
+    <img src="img/pet.gif" alt="" style="position: absolute; left: 100px; top: 400px;">
+</div>
+
+
+<style>
+
+</style>
+
+<body>
+
+
+</body>
+
+</html>
